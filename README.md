@@ -25,7 +25,6 @@ rails s
 ☝️ Les appels apis seront sur la route api/pokemons avec kaminari pagination ex.:
 ```
 http://localhost:3000/api/pokemons?page=2
-
 ```
 
 Pour tester le specs
