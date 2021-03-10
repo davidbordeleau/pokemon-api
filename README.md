@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Procédure d'installation locale du pokemon api
+========================================================
 
-Things you may want to cover:
+Cloner une **nouvelle copie** de pokemon api ex.:
 
-* Ruby version
+```bash
+git clone 'git@github.com:davidbordeleau/pokemon-api.git' pokemon-api
+cd pokemon-api
+bundle install
+```
 
-* System dependencies
+Préparer et importer les données de base du fichier csv
+```bash
+rails db:migrate
+rails db:seed
+```
 
-* Configuration
+Lancer le serveur rails pour tester sur postman
+```bash
+rails s
+```
 
-* Database creation
+☝️ Les appels apis seront sur la route api/pokemons avec kaminari pagination ex.:
+```
+http://localhost:3000/api/pokemons?page=2
 
-* Database initialization
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Pour tester le specs
+```bash
+rails db:test:prepare
+rspec ./spec/api/controllers/pokemons_controller_spec.rb
+```
