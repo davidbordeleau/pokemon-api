@@ -48,9 +48,8 @@ class Api::PokemonsController < ActionController::API
 
   private
 
-  def find_pokemon
-    pokemon_id = params[:row_id] || params[:id]
-    Pokemon.find_by(id: pokemon_id)
+  def find_pokemon 
+    Pokemon.find_by(id: params[:id])
   end
 
   def pokemon_params
