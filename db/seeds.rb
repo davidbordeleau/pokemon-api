@@ -18,6 +18,6 @@ CSV.foreach('./db/pokemon.csv', headers: :first_row, header_converters: :symbol)
   if pokemon.save
     puts "created #{pokemon.name}!"
   else
-    puts "ERROR cannot create #{pokemon.name}. Details: #{pokemon.message.errors}"
+    puts "ERROR cannot create #{pokemon.name}. Details: #{pokemon.errors.messages}"
   end
 end
