@@ -5,7 +5,7 @@ class Api::PokemonsController < ActionController::API
   end
 
   def show
-    return render plain: 'Not Found', status: 404 unless pokemon = find_pokemon
+    return render plain: 'Not Found', status: 404 unless (pokemon = find_pokemon)
 
     render json: pokemon
   end
@@ -23,10 +23,10 @@ class Api::PokemonsController < ActionController::API
   end
 
   def update
-    return render plain: 'Not Found', status: 404 unless pokemon = find_pokemon
+    return render plain: 'Not Found', status: 404 unless (pokemon = find_pokemon)
 
     if pokemon.update(pokemon_params)
-      status = "Pokemon updated"
+      status = 'Pokemon updated'
     else
       status = "Cannot update #{pokemon.errors.messages}"
     end
@@ -35,12 +35,12 @@ class Api::PokemonsController < ActionController::API
   end
 
   def destroy
-    return render plain: 'Not Found', status: 404 unless pokemon = find_pokemon
+    return render plain: 'Not Found', status: 404 unless (pokemon = find_pokemon)
 
     if pokemon.delete
       status = "Pokemon #{pokemon.name} deleted"
     else
-      statue = 'Cannot delete'
+      status = 'Cannot delete'
     end
 
     render plain: status
@@ -48,13 +48,12 @@ class Api::PokemonsController < ActionController::API
 
   private
 
-  def find_pokemon 
+  def find_pokemon
     Pokemon.find_by(id: params[:id])
   end
 
   def pokemon_params
     params.permit([
-      :row_id,
       :name,
       :type_one,
       :type_two,

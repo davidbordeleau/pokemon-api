@@ -2,18 +2,19 @@ require 'csv'
 
 CSV.foreach('./db/pokemon.csv', headers: :first_row, header_converters: :symbol) do |row|
   pokemon = Pokemon.new
-  pokemon.name = row[1]
-  pokemon.type_one = row[2]
-  pokemon.type_two = row[3]
-  pokemon.total = row[4]
-  pokemon.hp = row[5]
-  pokemon.attack = row[6]
-  pokemon.defence = row[7]
-  pokemon.sp_attack = row[8]
-  pokemon.sp_defence = row[9]
-  pokemon.speed = row[10]
-  pokemon.generation = row[11]
-  pokemon.legendary = row[12]
+
+  pokemon.name = row[:name]
+  pokemon.type_one = row[:type_one]
+  pokemon.type_two = row[:type_two]
+  pokemon.total = row[:total]
+  pokemon.hp = row[:hp]
+  pokemon.attack = row[:attack]
+  pokemon.defence = row[:defence]
+  pokemon.sp_attack = row[:sp_attack]
+  pokemon.sp_defence = row[:sp_defence]
+  pokemon.speed = row[:speed]
+  pokemon.generation = row[:generation]
+  pokemon.legendary = row[:legendary]
 
   if pokemon.save
     puts "created #{pokemon.name}!"
